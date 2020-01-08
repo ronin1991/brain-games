@@ -1,9 +1,10 @@
 {
   "name": "frontend-project-lvl1-ronin",
-  "version": "1.0.6",
+  "version": "1.1.1",
   "main": "index.js",
   "bin": {
-    "brain-games": "dist/bin/brain-games.js"
+    "brain-games": "dist/bin/brain-games.js",
+    "brain-even": "dist/bin/brain-even.js"
   },
   "files": [
     "dist"

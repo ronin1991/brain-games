@@ -1,5 +1,4 @@
 #!/usr/bin/env  node
-import greetingUser from '..';
+import { greetingByName } from '../index';
 
-console.log('Welcome to the Brain Games!\n');
-greetingUser();
+greetingByName();
