@@ -5,7 +5,7 @@ const welcom = () => console.log('\nWelcome to the Brain Games!');
 
 const getUserName = () => readlineSync.question('\nMay I have your name?: ');
 
-const userInput = (strInput) => readlineSync.question(strInput);
+const getUserInput = (strInput) => readlineSync.question(strInput);
 
 const outUserName = (name) => console.log(`Hello, ${name}!\n`);
 
@@ -13,9 +13,9 @@ const isEven = (number) => number % 2 === 0;
 
 const getRandomInt = (min, max) => Math.floor(Math.random() * (max - min)) + min;
 
-const greetingUser = () => {
+const greetingUser = (str) => {
   welcom();
-  console.log('Answer "yes" if the number is even, otherwise answer "no".');
+  console.log(str);
   const name = getUserName();
   outUserName(name);
   return name;
@@ -31,7 +31,7 @@ const gameLogic = (nameUser) => {
   const iter = (acc) => {
     const intGame = getRandomInt(1, 20);
     console.log(`Question: ${intGame}`);
-    const userAnswer = userInput('Your answer: ');
+    const userAnswer = getUserInput('Your answer: ');
     const isTrathCheck = isValidationAnswer(isEven, userAnswer, intGame);
 
     if (userAnswer !== 'yes' && userAnswer !== 'no') {
@@ -60,15 +60,16 @@ const gameLogic = (nameUser) => {
   iter(1);
 };
 
-const gameEngine = (func) => {
-  const name = greetingUser();
+const gameEngine = (func, condition) => {
+  console.log(condition);
+  const name = greetingUser(condition);
 
   for (let i = 0; i < 3; i++) {
     const getResultFunc = func();
     const boolFunc = car(getResultFunc);
     const inputUser = car(cdr(getResultFunc));
-    const resultFunc = cdr(cdr(getResultFunc));
-
+    const resultFunc = car(cdr(getResultFunc));
+    // return cons(resultСomparison, cons(getInput, cons(result, condition)));
     if (!boolFunc) {
       console.log(`'${inputUser}' is wrong answer ;(. Correct answer was '${resultFunc}'.Let's try again, ${name}!'`);
       return;
@@ -77,11 +78,11 @@ const gameEngine = (func) => {
     console.log('Correct!');
   }
 
-  console.log('Congratulations, Sam!');
+  console.log(`Congratulations, ${name}!`);
 };
 
 export {
-  welcom, getRandomInt, userInput,
+  welcom, getRandomInt, getUserInput,
   getUserName, gameLogic, gameEngine,
   greetingUser, outUserName,
 };

@@ -1,7 +1,9 @@
 import { cons } from '@hexlet/pairs';
-import { getRandomInt, userInput } from '../../index';
+import { getRandomInt, getUserInput } from '../../index';
 
-const realize = () => {
+const condition = 'What is the result of the expression?';
+
+const gameLogic = () => {
   const operations = '+-*';
   const oneOperand = getRandomInt(1, 200);
   const twoOperand = getRandomInt(1, 200);
@@ -9,7 +11,7 @@ const realize = () => {
   const randomOperation = operations[numberOperations];
   let result;
   console.log(`Question: ${oneOperand} ${randomOperation} ${twoOperand}`);
-  const getInput = +userInput('Your answer: ');
+  const getInput = +getUserInput('Your answer: ');
 
   switch (randomOperation) {
     case '+':
@@ -32,4 +34,4 @@ const realize = () => {
   return cons(resultСomparison, cons(getInput, result));
 };
 
-export default realize;
+export { gameLogic, condition };
