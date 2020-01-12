@@ -1,27 +1,25 @@
 import readlineSync from 'readline-sync';
+import { car, cdr } from '@hexlet/pairs';
 
-const greetingByName = () => {
-  console.log('Welcome to the Brain Games!\n');
-  const name = readlineSync.question('May I have your name?: ');
-  console.log(`Hello,${name}!`);
-};
+const welcom = () => console.log('\nWelcome to the Brain Games!');
 
-const welcom = () => console.log('Welcome to the Brain Games!');
+const getUserName = () => readlineSync.question('\nMay I have your name?: ');
+
+const userInput = (strInput) => readlineSync.question(strInput);
+
+const outUserName = (name) => console.log(`Hello, ${name}!\n`);
 
 const isEven = (number) => number % 2 === 0;
 
 const getRandomInt = (min, max) => Math.floor(Math.random() * (max - min)) + min;
 
-const getUserAnswer = () => {
-  const answer = readlineSync.question('Your answer: ');
-  return answer;
-};
-
-const getUserName = () => {
-  const name = readlineSync.question('May I have your name? ');
+const greetingUser = () => {
+  welcom();
+  console.log('Answer "yes" if the number is even, otherwise answer "no".');
+  const name = getUserName();
+  outUserName(name);
   return name;
 };
-
 
 const isValidationAnswer = (functionValidation, userAnswer, value) => {
   if (functionValidation(value) && userAnswer === 'yes') return true;
@@ -33,7 +31,7 @@ const gameLogic = (nameUser) => {
   const iter = (acc) => {
     const intGame = getRandomInt(1, 20);
     console.log(`Question: ${intGame}`);
-    const userAnswer = getUserAnswer();
+    const userAnswer = userInput('Your answer: ');
     const isTrathCheck = isValidationAnswer(isEven, userAnswer, intGame);
 
     if (userAnswer !== 'yes' && userAnswer !== 'no') {
@@ -62,15 +60,28 @@ const gameLogic = (nameUser) => {
   iter(1);
 };
 
-const checkEvenGame = () => {
-  welcom();
-  console.log('Answer "yes" if the number is even, otherwise answer "no".\n');
-  const name = getUserName();
-  gameLogic(name);
+const gameEngine = (func) => {
+  const name = greetingUser();
+
+  for (let i = 0; i < 3; i++) {
+    const getResultFunc = func();
+    const boolFunc = car(getResultFunc);
+    const inputUser = car(cdr(getResultFunc));
+    const resultFunc = cdr(cdr(getResultFunc));
+
+    if (!boolFunc) {
+      console.log(`'${inputUser}' is wrong answer ;(. Correct answer was '${resultFunc}'.Let's try again, ${name}!'`);
+      return;
+    }
+
+    console.log('Correct!');
+  }
+
+  console.log('Congratulations, Sam!');
 };
 
-
 export {
-  welcom, getRandomInt, checkEvenGame, getUserAnswer,
-  getUserName, greetingByName,
+  welcom, getRandomInt, userInput,
+  getUserName, gameLogic, gameEngine,
+  greetingUser, outUserName,
 };

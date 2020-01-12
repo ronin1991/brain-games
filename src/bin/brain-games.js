@@ -1,4 +1,4 @@
 #!/usr/bin/env  node
-import { greetingByName } from '../index';
+import { greetingUser } from '..';
 
-greetingByName();
+greetingUser();
