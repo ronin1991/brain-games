@@ -25,7 +25,6 @@ const gameLogic = () => {
   };
   const result = recurs();
   const resultСomparison = getInput === result;
-  console.log(resultСomparison);
   return cons(resultСomparison, cons(getInput, result));
 };
 

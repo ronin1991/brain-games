@@ -13,9 +13,11 @@ const isEven = (number) => number % 2 === 0;
 
 const getRandomInt = (min, max) => Math.floor(Math.random() * (max - min)) + min;
 
+const userOutput = (str) => console.log(str);
+
 const greetingUser = (str) => {
   welcom();
-  console.log(str);
+  userOutput(str);
   const name = getUserName();
   outUserName(name);
   return name;
@@ -61,15 +63,14 @@ const gameLogic = (nameUser) => {
 };
 
 const gameEngine = (func, condition) => {
-  console.log(condition);
   const name = greetingUser(condition);
 
   for (let i = 0; i < 3; i++) {
     const getResultFunc = func();
     const boolFunc = car(getResultFunc);
     const inputUser = car(cdr(getResultFunc));
-    const resultFunc = car(cdr(getResultFunc));
-    // return cons(resultСomparison, cons(getInput, cons(result, condition)));
+    const resultFunc = cdr(cdr(getResultFunc));
+
     if (!boolFunc) {
       console.log(`'${inputUser}' is wrong answer ;(. Correct answer was '${resultFunc}'.Let's try again, ${name}!'`);
       return;
