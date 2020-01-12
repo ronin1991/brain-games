@@ -6,3 +6,5 @@
 [![Build Status](https://travis-ci.com/ronin1991/frontend-project-lvl1.svg?branch=master)](https://travis-ci.com/ronin1991/frontend-project-lvl1)
 
 [![asciicast](https://asciinema.org/a/5pvecxolXdex0xpPb5aCODGVo.svg)](https://asciinema.org/a/5pvecxolXdex0xpPb5aCODGVo)
+
+[![asciicast](https://asciinema.org/a/8Vnc9ygcSpNuczUNxOLbsnyqk.svg)](https://asciinema.org/a/8Vnc9ygcSpNuczUNxOLbsnyqk)
