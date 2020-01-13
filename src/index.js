@@ -9,7 +9,7 @@ const getUserInput = (strInput) => readlineSync.question(strInput);
 
 const outUserName = (name) => console.log(`Hello, ${name}!\n`);
 
-const isEven = (number) => number % 2 === 0;
+// const isEven = (number) => number % 2 === 0;
 
 const getRandomInt = (min, max) => Math.floor(Math.random() * (max - min)) + min;
 
@@ -21,45 +21,6 @@ const greetingUser = (str) => {
   const name = getUserName();
   outUserName(name);
   return name;
-};
-
-const isValidationAnswer = (functionValidation, userAnswer, value) => {
-  if (functionValidation(value) && userAnswer === 'yes') return true;
-  if (!functionValidation(value) && userAnswer === 'no') return true;
-  return false;
-};
-
-const gameLogic = (nameUser) => {
-  const iter = (acc) => {
-    const intGame = getRandomInt(1, 20);
-    console.log(`Question: ${intGame}`);
-    const userAnswer = getUserInput('Your answer: ');
-    const isTrathCheck = isValidationAnswer(isEven, userAnswer, intGame);
-
-    if (userAnswer !== 'yes' && userAnswer !== 'no') {
-      console.log('is wrong answer');
-      return;
-    }
-    if (acc === 3) {
-      console.log(`Congratulations, ${nameUser}!`);
-      return;
-    }
-
-    if (isTrathCheck) {
-      acc += 1;
-      console.log('Correct!');
-      iter(acc);
-    }
-
-    if (!isTrathCheck && userAnswer === 'yes') {
-      console.log(`'yes' is wrong answer ;(. Correct answer was 'no'.Let's try again, ${nameUser}!`);
-    }
-
-    if (!isTrathCheck && userAnswer === 'no') {
-      console.log(`'yes' is wrong answer ;(. Correct answer was 'no'.Let's try again, ${nameUser}!`);
-    }
-  };
-  iter(1);
 };
 
 const gameEngine = (func, condition) => {
@@ -84,6 +45,6 @@ const gameEngine = (func, condition) => {
 
 export {
   welcom, getRandomInt, getUserInput,
-  getUserName, gameLogic, gameEngine,
+  getUserName, gameEngine,
   greetingUser, outUserName,
 };

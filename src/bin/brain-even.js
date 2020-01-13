@@ -1,4 +1,5 @@
 #!/usr/bin/env  node
-import checkEvenGame from './games/even';
+import { gameLogic, condition } from './games/even';
+import { gameEngine } from '../index';
 
-checkEvenGame();
+gameEngine(gameLogic, condition);
