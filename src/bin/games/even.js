@@ -1,19 +1,20 @@
 import { cons } from '@hexlet/pairs';
-import { getRandomInt, getUserInput } from '../../index';
+import readlineSync from 'readline-sync';
+import { getRandomInt, isEven, gameEngine as engine } from '../../index';
 
 const condition = 'Answer "yes" if given number is prime. Otherwise answer "no".';
 
 const gameLogic = () => {
   const randomNum = getRandomInt(1, 101);
   console.log(`Question: ${randomNum}`);
-  const getInput = getUserInput('Your answer: ');
+  const getInput = readlineSync.question('Your answer: ');
   let result;
 
-  if ((randomNum % 2) === 0) {
+  if (isEven(randomNum)) {
     result = 'yes';
   }
 
-  if ((randomNum % 2) !== 0) {
+  if (!isEven(randomNum)) {
     result = 'no';
   }
 
@@ -22,4 +23,8 @@ const gameLogic = () => {
   return cons(resultСomparison, cons(getInput, result));
 };
 
-export { gameLogic, condition };
+const gameFunc = () => {
+  engine(gameLogic, condition);
+};
+
+export default gameFunc;

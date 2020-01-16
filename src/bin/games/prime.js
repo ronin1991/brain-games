@@ -1,5 +1,5 @@
 import { cons } from '@hexlet/pairs';
-import { getRandomInt, getUserInput } from '../../index';
+import { getRandomInt, getUserInput, gameEngine as engine } from '../../index';
 
 const condition = 'Answer "yes" if given number is prime. Otherwise answer "no".';
 
@@ -33,4 +33,8 @@ const gameLogic = () => {
   return cons(resultСomparison, cons(getInput, result));
 };
 
-export { gameLogic, condition };
+const gameFunc = () => {
+  engine(gameLogic, condition);
+};
+
+export default gameFunc;

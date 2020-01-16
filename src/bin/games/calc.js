@@ -1,5 +1,5 @@
 import { cons } from '@hexlet/pairs';
-import { getRandomInt, getUserInput } from '../../index';
+import { getRandomInt, getUserInput, gameEngine as engine } from '../../index';
 
 const condition = 'What is the result of the expression?';
 
@@ -7,7 +7,7 @@ const gameLogic = () => {
   const operations = '+-*';
   const oneOperand = getRandomInt(1, 200);
   const twoOperand = getRandomInt(1, 200);
-  const numberOperations = getRandomInt(0, 3);
+  const numberOperations = getRandomInt(0, operations.length);
   const randomOperation = operations[numberOperations];
   let result;
   console.log(`Question: ${oneOperand} ${randomOperation} ${twoOperand}`);
@@ -34,4 +34,8 @@ const gameLogic = () => {
   return cons(resultСomparison, cons(getInput, result));
 };
 
-export { gameLogic, condition };
+const gameFunc = () => {
+  engine(gameLogic, condition);
+};
+
+export default gameFunc;

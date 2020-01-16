@@ -1,5 +1,4 @@
 #!/usr/bin/env  node
-import { condition, gameLogic } from './games/gcd';
-import { gameEngine } from '../index';
+import gameFunc from './games/even';
 
-gameEngine(gameLogic, condition);
+gameFunc();

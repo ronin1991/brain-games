@@ -1,5 +1,5 @@
 import { cons } from '@hexlet/pairs';
-import { getRandomInt, getUserInput } from '../../index';
+import { getRandomInt, getUserInput, gameEngine as engine } from '../../index';
 
 
 const condition = 'What number is missing in the progression?';
@@ -29,4 +29,8 @@ const gameLogic = () => {
   return cons(resultСomparison, cons(getInput, result));
 };
 
-export { condition, gameLogic };
+const gameFunc = () => {
+  engine(gameLogic, condition);
+};
+
+export default gameFunc;
