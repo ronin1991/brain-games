@@ -1,14 +1,11 @@
 import { cons } from '@hexlet/pairs';
-import readlineSync from 'readline-sync';
-import { getRandomInt, gameEngine as engine } from '../../index';
+import { getRandomInt, gameEngine as engine } from '../index';
 
 const condition = ('Find the greatest common divisor of given numbers.');
 
 const gameLogic = () => {
   const oneOperand = getRandomInt(1, 100);
   const twoOperand = getRandomInt(1, 100);
-  console.log(`Question: ${oneOperand}  ${twoOperand}`);
-  const getInput = +readlineSync.question('Your answer: ');
 
   const recurs = () => {
     const smallestNumber = (oneOperand > twoOperand) ? twoOperand : oneOperand;
@@ -25,8 +22,7 @@ const gameLogic = () => {
     return iter(smallestNumber);
   };
   const result = recurs();
-  const resultСomparison = getInput === result;
-  return cons(resultСomparison, cons(getInput, result));
+  return cons(result, `Question: ${oneOperand}  ${twoOperand}`);
 };
 
 const gameFunc = () => {

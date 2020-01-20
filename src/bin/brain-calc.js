@@ -1,4 +1,4 @@
 #!/usr/bin/env  node
-import engine from './games/calc';
+import engine from '../games/calc';
 
 engine();
