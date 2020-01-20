@@ -1,5 +1,7 @@
+import readlineSync from 'readline-sync';
 import { cons } from '@hexlet/pairs';
 import { getRandomInt, gameEngine as engine } from '../../index';
+
 
 const condition = 'Answer "yes" if given number is prime. Otherwise answer "no".';
 
@@ -7,7 +9,7 @@ const gameLogic = () => {
   let resultСomparison;
   const randomNum = getRandomInt(1, 101);
   console.log(`Question: ${randomNum}`);
-  const getInput = getUserInput('Your answer: ');
+  const getInput = +readlineSync.question('Your answer: ');
 
   const isPrime = () => {
     const iter = (counter, acc) => {

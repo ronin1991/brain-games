@@ -1,5 +1,6 @@
+import readlineSync from 'readline-sync';
 import { cons } from '@hexlet/pairs';
-import { getRandomInt, getUserInput, gameEngine as engine } from '../../index';
+import { getRandomInt, gameEngine as engine } from '../../index';
 
 
 const condition = 'What number is missing in the progression?';
@@ -24,7 +25,7 @@ const gameLogic = () => {
   }
 
   console.log(`Question: ${arrAnswer}`);
-  const getInput = +getUserInput('Your answer: ');
+  const getInput = +readlineSync.question('Your answer: ');
   const resultСomparison = getInput === result;
   return cons(resultСomparison, cons(getInput, result));
 };

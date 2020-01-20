@@ -1,5 +1,6 @@
+import readlineSync from 'readline-sync';
 import { cons } from '@hexlet/pairs';
-import { getRandomInt, getUserInput, gameEngine as engine } from '../../index';
+import { getRandomInt, gameEngine as engine } from '../../index';
 
 const condition = 'What is the result of the expression?';
 
@@ -11,7 +12,7 @@ const gameLogic = () => {
   const randomOperation = operations[numberOperations];
   let result;
   console.log(`Question: ${oneOperand} ${randomOperation} ${twoOperand}`);
-  const getInput = +getUserInput('Your answer: ');
+  const getInput = +readlineSync.question('Your answer: ');
 
   switch (randomOperation) {
     case '+':
