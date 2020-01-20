@@ -7,7 +7,7 @@ const condition = 'Answer "yes" if given number is prime. Otherwise answer "no".
 const gameLogic = () => {
   const gameQuestionNumber = getRandomInt(1, 101);
 
-  const isPrime = () => {
+  const isPrime = (number) => {
     const iter = (counter, acc) => {
       if (counter === 1) return 'yes';
 
@@ -15,10 +15,10 @@ const gameLogic = () => {
 
       return iter(counter - 1, acc);
     };
-    return iter(gameQuestionNumber - 1, gameQuestionNumber);
+    return iter(number - 1, gameQuestionNumber);
   };
 
-  const result = isPrime();
+  const result = isPrime(gameQuestionNumber);
 
   return cons(result, `Question: ${gameQuestionNumber}`);
 };
