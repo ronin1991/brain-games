@@ -4,7 +4,7 @@ import { getRandomInt, gameEngine as engine } from '../index';
 const operations = '+-*';
 const condition = 'What is the result of the expression?';
 
-const gameLogic = () => {
+const calculate = () => {
   const oneOperand = getRandomInt(1, 200);
   const twoOperand = getRandomInt(1, 200);
   const numberOperations = getRandomInt(0, operations.length);
@@ -27,13 +27,12 @@ const gameLogic = () => {
     default:
       break;
   }
-
-  // const resultСomparison = getInput === result;
-  return cons(сalculationResult, `Question: ${oneOperand} ${randomOperation} ${twoOperand}`);
+  const question = `${oneOperand} ${randomOperation} ${twoOperand}`;
+  return cons(сalculationResult, question);
 };
 
-const gameFunc = () => {
-  engine(gameLogic, condition);
+const gamePerformer = () => {
+  engine(calculate, condition);
 };
 
-export default gameFunc;
+export default gamePerformer;

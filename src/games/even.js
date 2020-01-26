@@ -4,23 +4,16 @@ import { getRandomInt, gameEngine as engine } from '../index';
 const isEven = (number) => number % 2 === 0;
 const condition = 'Answer "yes" if given number is prime. Otherwise answer "no".';
 
-const gameLogic = () => {
-  const gameQuestionNumber = getRandomInt(1, 101);
-  let result;
+const checkEven = () => {
+  const gameQuestion = getRandomInt(1, 101);
+  const result = isEven(gameQuestion) ? 'yes' : 'no';
+  const question = gameQuestion;
 
-  if (isEven(gameQuestionNumber)) {
-    result = 'yes';
-  }
-
-  if (!isEven(gameQuestionNumber)) {
-    result = 'no';
-  }
-
-  return cons(result, `Question: ${gameQuestionNumber}`);
+  return cons(result, question);
 };
 
-const gameFunc = () => {
-  engine(gameLogic, condition);
+const gamePerformer = () => {
+  engine(checkEven, condition);
 };
 
-export default gameFunc;
+export default gamePerformer;

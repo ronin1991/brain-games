@@ -7,18 +7,18 @@ const gameEngine = (func, condition) => {
   console.log('\nWelcome to the Brain Games!');
   console.log(condition);
   const getName = readlineSync.question('\nMay I have your name?: ');
-  console.log(getName);
+  console.log(`Hello, ${getName}!`);
 
-  for (let i = 0; i < 3; i++) {
+
+  for (let i = 0; i < 3; i += 1) {
     const getPair = func();
-    const сalculationResult = car(getPair);
-    const gameAnswer = cdr(getPair);
-    console.log(gameAnswer);
+    const сalculationResult = `${car(getPair)}`;
+    const gameQuestion = cdr(getPair);
+    console.log(`Question: ${gameQuestion}`);
+    const answerGame = readlineSync.question('Your answer: ');
 
-    const getInput = readlineSync.question('Your answer: ');
-
-    if (сalculationResult != getInput) {
-      console.log(`'${getInput}' is wrong answer ;(. Correct answer was '${сalculationResult}'.Let's try again, ${getName}!'`);
+    if (сalculationResult !== answerGame) {
+      console.log(`'${answerGame}' is wrong answer ;(. Correct answer was '${сalculationResult}'.Let's try again, ${getName}!'`);
       return;
     }
 

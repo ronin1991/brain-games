@@ -4,27 +4,27 @@ import { getRandomInt, gameEngine as engine } from '../index';
 
 const condition = 'Answer "yes" if given number is prime. Otherwise answer "no".';
 
-const gameLogic = () => {
-  const gameQuestionNumber = getRandomInt(1, 101);
+const isPrime = (number) => {
+  const iter = (counter, acc) => {
+    if (counter === 1) return 'yes';
 
-  const isPrime = (number) => {
-    const iter = (counter, acc) => {
-      if (counter === 1) return 'yes';
+    if (acc % counter === 0) return 'no';
 
-      if (acc % counter === 0) return 'no';
-
-      return iter(counter - 1, acc);
-    };
-    return iter(number - 1, gameQuestionNumber);
+    return iter(counter - 1, acc);
   };
-
-  const result = isPrime(gameQuestionNumber);
-
-  return cons(result, `Question: ${gameQuestionNumber}`);
+  return iter(number - 1, number);
 };
 
-const gameFunc = () => {
-  engine(gameLogic, condition);
+const indicatePrime = () => {
+  const gameQuestion = getRandomInt(1, 101);
+  const result = isPrime(gameQuestion);
+  const question = gameQuestion;
+
+  return cons(result, question);
 };
 
-export default gameFunc;
+const gamePerformer = () => {
+  engine(indicatePrime, condition);
+};
+
+export default gamePerformer;
