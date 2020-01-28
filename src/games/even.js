@@ -1,19 +1,19 @@
 import { cons } from '@hexlet/pairs';
-import { getRandomInt, gameEngine as engine } from '../index';
+import gameEngine from '../index';
+import getRandomNum from '../utils';
 
 const isEven = (number) => number % 2 === 0;
 const condition = 'Answer "yes" if given number is prime. Otherwise answer "no".';
 
-const checkEven = () => {
-  const gameQuestion = getRandomInt(1, 101);
+const createDataRound = () => {
+  const gameQuestion = getRandomNum(1, 101);
   const result = isEven(gameQuestion) ? 'yes' : 'no';
-  const question = gameQuestion;
 
-  return cons(result, question);
+  return cons(result, gameQuestion);
 };
 
-const gamePerformer = () => {
-  engine(checkEven, condition);
+const launchGame = () => {
+  gameEngine(createDataRound, condition);
 };
 
-export default gamePerformer;
+export default launchGame;

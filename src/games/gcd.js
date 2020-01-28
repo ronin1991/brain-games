@@ -1,34 +1,35 @@
 import { cons } from '@hexlet/pairs';
-import { getRandomInt, gameEngine as engine } from '../index';
+import gameEngine from '../index';
+import getRandomNum from '../utils';
 
 const condition = ('Find the greatest common divisor of given numbers.');
-const findNode = (oneOperand, twoOperand) => {
+const findCommonDivisor = (oneOperand, twoOperand) => {
   const smallestNumber = (oneOperand > twoOperand) ? twoOperand : oneOperand;
   const greaterNumber = (oneOperand < twoOperand) ? twoOperand : oneOperand;
 
-  const iter = (acc) => {
-    if ((smallestNumber % acc) === 0 && (greaterNumber % acc) === 0) {
-      return acc;
+  const iter = (divider) => {
+    if ((smallestNumber % divider) === 0 && (greaterNumber % divider) === 0) {
+      return divider;
     }
 
-    return iter(acc - 1);
+    return iter(divider - 1);
   };
 
   return iter(smallestNumber);
 };
 
-const findCommonDivisor = () => {
-  const oneOperand = getRandomInt(1, 100);
-  const twoOperand = getRandomInt(1, 100);
+const createDataRound = () => {
+  const oneOperand = getRandomNum(1, 100);
+  const twoOperand = getRandomNum(1, 100);
 
-  const result = findNode(oneOperand, twoOperand);
+  const result = findCommonDivisor(oneOperand, twoOperand);
   const question = `${oneOperand}  ${twoOperand}`;
 
   return cons(result, question);
 };
 
-const gamePerformer = () => {
-  engine(findCommonDivisor, condition);
+const launchGame = () => {
+  gameEngine(createDataRound, condition);
 };
 
-export default gamePerformer;
+export default launchGame;

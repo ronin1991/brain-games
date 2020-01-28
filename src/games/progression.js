@@ -1,35 +1,36 @@
 import { cons } from '@hexlet/pairs';
-import { getRandomInt, gameEngine as engine } from '../index';
+import gameEngine from '../index';
+import getRandomNum from '../utils';
 
 
 const condition = 'What number is missing in the progression?';
+const lengthProgression = 10;
 
-const findMissingNumber = () => {
-  let arrQuestoin = '';
+const createDataRound = () => {
+  let questoin = '';
   let result = 0;
-  const lengthProgression = 10;
-  const gameQuestion = getRandomInt(2, 10);
-  const randomIndex = getRandomInt(2, 6);
+  const start = getRandomNum(1, 10);
+  const numberQuestion = getRandomNum(start, lengthProgression - 1);
+  const diff = getRandomNum(2, 5);
   const arr = [];
 
-  for (let i = 0, j = 1; i < lengthProgression; i += 1) {
-    arr.push(j);
-    j += randomIndex;
+  for (let i = 0; i < lengthProgression; i += 1) {
+    arr.push(start + diff * i);
   }
 
-  result = arr[gameQuestion];
-  arr[gameQuestion] = '..';
+  result = arr[numberQuestion];
+  arr[numberQuestion] = '..';
 
   for (let i = 0; i < lengthProgression; i += 1) {
-    arrQuestoin = `${arrQuestoin} ${arr[i]}`;
+    questoin = `${questoin} ${arr[i]}`;
   }
-  const question = arrQuestoin;
 
-  return cons(result, question);
+
+  return cons(result, questoin);
 };
 
-const gamePerformer = () => {
-  engine(findMissingNumber, condition);
+const launchGame = () => {
+  gameEngine(createDataRound, condition);
 };
 
-export default gamePerformer;
+export default launchGame;

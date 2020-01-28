@@ -1,38 +1,40 @@
+
 import { cons } from '@hexlet/pairs';
-import { getRandomInt, gameEngine as engine } from '../index';
+import gameEngine from '../index';
+import getRandomNum from '../utils';
 
 const operations = '+-*';
 const condition = 'What is the result of the expression?';
 
 const calculate = () => {
-  const oneOperand = getRandomInt(1, 200);
-  const twoOperand = getRandomInt(1, 200);
-  const numberOperations = getRandomInt(0, operations.length);
+  const firstOperand = getRandomNum(1, 200);
+  const secondOperand = getRandomNum(1, 200);
+  const numberOperations = getRandomNum(0, operations.length);
   const randomOperation = operations[numberOperations];
   let сalculationResult;
 
   switch (randomOperation) {
     case '+':
-      сalculationResult = oneOperand + twoOperand;
+      сalculationResult = firstOperand + secondOperand;
       break;
 
     case '-':
-      сalculationResult = oneOperand - twoOperand;
+      сalculationResult = firstOperand - secondOperand;
       break;
 
     case '*':
-      сalculationResult = oneOperand * twoOperand;
+      сalculationResult = firstOperand * secondOperand;
       break;
 
     default:
       break;
   }
-  const question = `${oneOperand} ${randomOperation} ${twoOperand}`;
+  const question = `${firstOperand} ${randomOperation} ${secondOperand}`;
   return cons(сalculationResult, question);
 };
 
-const gamePerformer = () => {
-  engine(calculate, condition);
+const launchGame = () => {
+  gameEngine(calculate, condition);
 };
 
-export default gamePerformer;
+export default launchGame;
