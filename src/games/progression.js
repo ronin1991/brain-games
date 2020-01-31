@@ -8,25 +8,23 @@ const lengthProgression = 10;
 
 const createDataRound = () => {
   let questoin = '';
-  let result = 0;
-  const start = getRandomNum(1, 9);
+  const start = getRandomNum(1, 8);
   const indexQuestion = getRandomNum(start, lengthProgression - 1);
   const diff = getRandomNum(2, 5);
   const progression = [];
+  const result = start + diff * indexQuestion;
 
   for (let i = 0; i < lengthProgression; i += 1) {
     progression.push(start + diff * i);
   }
 
-  result = progression[indexQuestion];
   progression[indexQuestion] = '..';
 
   for (let i = 0; i < lengthProgression; i += 1) {
     questoin = `${questoin} ${progression[i]}`;
   }
 
-
-  return cons(result, questoin);
+  return cons(result, questoin.slice(1));
 };
 
 const launchGame = () => {

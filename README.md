@@ -3,7 +3,7 @@
 ## Setup
 
     $ make install
-    $ npm run build
+    $ make build
 
 ## Games
 
