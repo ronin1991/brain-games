@@ -3,9 +3,9 @@ import gameEngine from '../index';
 import getRandomNum from '../utils';
 
 const condition = ('Find the greatest common divisor of given numbers.');
-const findCommonDivisor = (oneOperand, twoOperand) => {
-  const smallestNumber = (oneOperand > twoOperand) ? twoOperand : oneOperand;
-  const greaterNumber = (oneOperand < twoOperand) ? twoOperand : oneOperand;
+const findGreatestCommonFactor = (firstOperand, secondOperand) => {
+  const smallestNumber = (firstOperand > secondOperand) ? secondOperand : firstOperand;
+  const greaterNumber = (firstOperand < secondOperand) ? secondOperand : firstOperand;
 
   const iter = (divider) => {
     if ((smallestNumber % divider) === 0 && (greaterNumber % divider) === 0) {
@@ -19,11 +19,11 @@ const findCommonDivisor = (oneOperand, twoOperand) => {
 };
 
 const createDataRound = () => {
-  const oneOperand = getRandomNum(1, 100);
-  const twoOperand = getRandomNum(1, 100);
+  const firstOperand = getRandomNum(1, 100);
+  const secondOperand = getRandomNum(1, 100);
 
-  const result = findCommonDivisor(oneOperand, twoOperand);
-  const question = `${oneOperand}  ${twoOperand}`;
+  const result = findGreatestCommonFactor(firstOperand, secondOperand);
+  const question = `${firstOperand}  ${secondOperand}`;
 
   return cons(result, question);
 };

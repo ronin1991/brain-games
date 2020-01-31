@@ -6,11 +6,11 @@ import getRandomNum from '../utils';
 const operations = '+-*';
 const condition = 'What is the result of the expression?';
 
-const calculate = () => {
+const createDataRound = () => {
   const firstOperand = getRandomNum(1, 200);
   const secondOperand = getRandomNum(1, 200);
-  const numberOperations = getRandomNum(0, operations.length);
-  const randomOperation = operations[numberOperations];
+  const operationsIndex = getRandomNum(0, operations.length - 1);
+  const randomOperation = operations[operationsIndex];
   let сalculationResult;
 
   switch (randomOperation) {
@@ -34,7 +34,7 @@ const calculate = () => {
 };
 
 const launchGame = () => {
-  gameEngine(calculate, condition);
+  gameEngine(createDataRound, condition);
 };
 
 export default launchGame;
